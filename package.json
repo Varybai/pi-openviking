@@ -1,0 +1,54 @@
+{
+  "name": "pi-openviking",
+  "version": "0.2.0",
+  "description": "OpenViking MCP connection package for Pi Coding Agent 1.x",
+  "type": "module",
+  "license": "Apache-2.0",
+  "keywords": [
+    "pi-package",
+    "openviking",
+    "mcp",
+    "pi-coding-agent"
+  ],
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
+  },
+  "pi": {
+    "extensions": [
+      "./src/index.mjs"
+    ]
+  },
+  "bin": {
+    "pi-openviking": "./bin/pi-openviking.mjs"
+  },
+  "files": [
+    "src/",
+    "vendor/",
+    "bin/",
+    "README.md",
+    "LICENSE",
+    "NOTICE",
+    "docs/"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "check:pack": "node scripts/check-pack.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Varybai/pi-openviking.git"
+  },
+  "homepage": "https://github.com/Varybai/pi-openviking#readme",
+  "bugs": {
+    "url": "https://github.com/Varybai/pi-openviking/issues"
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    }
+  }
+}

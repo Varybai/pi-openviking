@@ -1,0 +1,11 @@
+pi-openviking
+
+This package contains an unchanged copy of the OpenViking shared credential
+resolver in vendor/credentials.mjs. Its source is the Uni-Viking/OpenViking
+example Pi extension, source/examples/pi-coding-agent-extension/shared/credentials.mjs,
+from Uni-Viking commit 4d394a0. The examples are licensed under Apache-2.0.
+The corresponding Apache-2.0 license is included in LICENSE.
+
+The package adds Pi-native MCP registration, named connection management,
+setup dialogs, a CLI, and credential-redacted health diagnostics. It does not bundle or modify the OpenViking
+server, Pi's MCP transport, or the separate OpenViking memory extension.

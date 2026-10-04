@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.tgz
+.pi/
+.env
+.env.*
+openviking-connections.json
+openviking-mcp.json
+*.lock
