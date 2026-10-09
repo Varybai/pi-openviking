@@ -147,9 +147,11 @@ test('extension waits for session trust before registration and performs no netw
   }
 });
 
-test('package manifest ships only the connector and treats the Pi host as a peer', () => {
+test('package manifest exposes the extension and shared Skill and treats Pi as a peer', () => {
   const manifest = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
   assert.deepEqual(manifest.pi.extensions, ['./src/index.mjs']);
+  assert.deepEqual(manifest.pi.skills, ['./skills']);
+  assert.ok(manifest.files.includes('skills/'));
   assert.equal(manifest.peerDependencies['@earendil-works/pi-coding-agent'], '*');
   assert.equal(manifest.dependencies, undefined);
   assert.equal(manifest.scripts.postinstall, undefined);

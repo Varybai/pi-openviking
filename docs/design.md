@@ -50,3 +50,13 @@ profile/token 文件为 0600，采用临时文件与原子替换，每次修改�
 单元测试使用临时目录和假凭据，覆盖首次启动、作用范围、凭据隔离、向导取消、CLI、原子保存、文件锁、错误脱敏。实际 Pi 验收使用隔离 agent/project 目录，检查 Git 安装、原生 MCP 注册和服务端只读调用。
 
 Git package 不包含 OpenViking 服务或数据。MCP 工具列表来自服务器。没有 `lego_query` 的普通 OpenViking 仍能使用其现有工具。无 npm 发布步骤。
+
+## Pi package 与标准 Skill 共用一个来源
+
+0.3.0 新增 `skills/openviking/SKILL.md`，使用标准 YAML `name`、`description` 和 `license`。通用检索、入库、连接检查及可选 LDraw 说明保存在同目录的 `references/`。Pi 专用操作单独放在 `references/pi-package.md`，仅在 Pi package 场景读取。
+
+`package.json` 保留原有 `pi.extensions`，增加 `pi.skills: ["./skills"]` 和 npm `files` 中的 `skills/`。`pi install` 加载扩展与 Skill；标准 `npx skills add` 只分发选中的 Skill 目录。根 README 是 Agent 的安装和流程入口，操作规则由 Skill 参考文档维护。
+
+Skill 没有到根 README、`src/` 或 `bin/` 的文件依赖。Pi 专用 CLI 是有条件的外部运行依赖，需要完整 package；其他宿主按自身 MCP 机制连接 OV。两种安装方式均不部署 OV 服务。Skill 安装成功与 MCP 连接成功分别报告。
+
+包检查覆盖 Skill 资源完整打包及相对链接不越出 Skill 目录。安装验收使用隔离项目，分别运行 Pi package 安装和 Skills CLI 的 Codex / Claude Code 安装，并核对实际发现结果与文件内容。标准格式参考 [Agent Skills specification](https://agentskills.io/specification)。

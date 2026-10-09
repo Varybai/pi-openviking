@@ -1,14 +1,15 @@
 {
   "name": "pi-openviking",
-  "version": "0.2.0",
-  "description": "OpenViking MCP connection package for Pi Coding Agent 1.x",
+  "version": "0.3.0",
+  "description": "OpenViking MCP extension for Pi and a portable Agent Skill for knowledge workflows",
   "type": "module",
   "license": "Apache-2.0",
   "keywords": [
     "pi-package",
     "openviking",
     "mcp",
-    "pi-coding-agent"
+    "pi-coding-agent",
+    "agent-skills"
   ],
   "engines": {
     "node": ">=22.18.0"
@@ -19,6 +20,9 @@
   "pi": {
     "extensions": [
       "./src/index.mjs"
+    ],
+    "skills": [
+      "./skills"
     ]
   },
   "bin": {
@@ -31,7 +35,8 @@
     "README.md",
     "LICENSE",
     "NOTICE",
-    "docs/"
+    "docs/",
+    "skills/"
   ],
   "scripts": {
     "test": "node --test test/*.test.mjs",
